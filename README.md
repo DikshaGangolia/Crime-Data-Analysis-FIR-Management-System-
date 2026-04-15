@@ -1,14 +1,12 @@
 ---
-
 title: "Crime Data Analysis & FIR Management System"
 output: html_document
----------------------
+---
 
 # 🚔 Introduction
 
-This project demonstrates a **Crime Data Analysis and FIR Management System** using SQL.
+This project demonstrates a **Crime Data Analysis and FIR Management System** using SQL.  
 It includes database creation, data insertion, queries, indexing, and user access control.
-
 ---
 
 # 🛠️ Database Setup
