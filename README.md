@@ -1,19 +1,15 @@
 
-
-
 ---
 title: "Crime Data Analysis & FIR Management System"
 output: html_document
 ---
 
 # 🚔 Introduction
-
 This project demonstrates a **Crime Data Analysis and FIR Management System** using SQL.  
 It includes database creation, data insertion, queries, indexing, and user access control.
 ---
 
 # 🛠️ Database Setup
-
 ## Step 1: Create Database
 
 ```sql
@@ -25,7 +21,6 @@ USE CrimeSystem;
 ---
 
 # 📂 Table Creation
-
 ## Officers Table
 
 ```sql
@@ -38,7 +33,6 @@ CREATE TABLE Officers (
 ```
 
 ## Criminals Table
-
 ```sql
 CREATE TABLE Criminals (
     criminal_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -50,7 +44,6 @@ CREATE TABLE Criminals (
 ```
 
 ## FIR Table
-
 ```sql
 CREATE TABLE FIR (
     fir_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -64,7 +57,6 @@ CREATE TABLE FIR (
 ```
 
 ## Cases Table
-
 ```sql
 CREATE TABLE Cases (
     case_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -79,7 +71,6 @@ CREATE TABLE Cases (
 ---
 
 # 📥 Data Insertion
-
 ## Insert Officers
 
 ```sql
@@ -90,7 +81,6 @@ INSERT INTO Officers (name, officer_rank, station) VALUES
 ```
 
 ## Insert Criminals
-
 ```sql
 INSERT INTO Criminals (name, age, crime_type, previous_cases) VALUES
 ('Ravi Kumar', 30, 'Theft', 2),
@@ -99,7 +89,6 @@ INSERT INTO Criminals (name, age, crime_type, previous_cases) VALUES
 ```
 
 ## Insert FIR Records
-
 ```sql
 INSERT INTO FIR (date_filed, area, crime_type, officer_id, status) VALUES
 ('2025-01-10', 'Delhi', 'Theft', 1, 'Open'),
@@ -108,7 +97,6 @@ INSERT INTO FIR (date_filed, area, crime_type, officer_id, status) VALUES
 ```
 
 ## Insert Cases
-
 ```sql
 INSERT INTO Cases (fir_id, criminal_id, verdict) VALUES
 (1, 1, 'Pending'),
@@ -119,9 +107,7 @@ INSERT INTO Cases (fir_id, criminal_id, verdict) VALUES
 ---
 
 # 📊 Data Analysis Queries
-
 ## 1. Total Crimes by Area
-
 ```sql
 SELECT area, COUNT(*) AS total_crimes
 FROM FIR
@@ -130,7 +116,6 @@ ORDER BY total_crimes DESC;
 ```
 
 ## 2. Criminals with Multiple Cases
-
 ```sql
 SELECT name, previous_cases
 FROM Criminals
@@ -138,7 +123,6 @@ WHERE previous_cases > 1;
 ```
 
 ## 3. Case Resolution Rate
-
 ```sql
 SELECT 
     COUNT(CASE WHEN status = 'Closed' THEN 1 END) * 100.0 / COUNT(*) AS resolution_rate
@@ -146,7 +130,6 @@ FROM FIR;
 ```
 
 ## 4. Cases Handled by Officers
-
 ```sql
 SELECT o.name, COUNT(f.fir_id) AS total_cases
 FROM Officers o
@@ -155,7 +138,6 @@ GROUP BY o.name;
 ```
 
 ## 5. Crime Ranking by Area
-
 ```sql
 SELECT area, COUNT(*) AS total_crimes,
 RANK() OVER (ORDER BY COUNT(*) DESC) AS rank_area
@@ -164,7 +146,6 @@ GROUP BY area;
 ```
 
 ## 6. Detailed Case Report
-
 ```sql
 SELECT 
     f.fir_id,
@@ -182,9 +163,7 @@ JOIN Officers o ON f.officer_id = o.officer_id;
 ---
 
 # ⚡ Optimization
-
 ## Indexing
-
 ```sql
 CREATE INDEX idx_area ON FIR(area);
 CREATE INDEX idx_crime_type ON FIR(crime_type);
@@ -193,7 +172,6 @@ CREATE INDEX idx_crime_type ON FIR(crime_type);
 ---
 
 # 👁️ View Creation
-
 ```sql
 CREATE VIEW CrimeSummary AS
 SELECT area, COUNT(*) AS total_cases
@@ -204,7 +182,6 @@ GROUP BY area;
 ---
 
 # 🔐 User Access Control
-
 ```sql
 CREATE USER 'officer_user'@'localhost' IDENTIFIED BY 'password';
 
@@ -217,21 +194,17 @@ GRANT SELECT ON CrimeSystem.Criminals TO 'officer_user'@'localhost';
 # ▶️ How to Run
 
 ## Step 1:
-
 Open MySQL Workbench / Command Line
 
 ## Step 2:
-
 Run the SQL file step-by-step
 
 ## Step 3:
-
 Execute queries to view outputs
 
 ---
 
 # 📌 Conclusion
-
 This system helps in:
 
 * Managing FIR records efficiently
