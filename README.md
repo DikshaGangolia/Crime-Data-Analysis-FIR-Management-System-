@@ -98,7 +98,6 @@ The project includes SQL queries for analyzing crime-related data, such as:
 ## 🧠 SQL Concepts Demonstrated
 
 This project demonstrates several important database concepts:
-
 - Database creation
 - Table design
 - Primary keys
