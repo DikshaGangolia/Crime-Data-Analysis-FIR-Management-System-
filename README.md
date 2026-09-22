@@ -51,15 +51,19 @@ The project includes database creation, data insertion, analytical SQL queries, 
 ## 🗄️ Core Database Entities
 
 ### 👮 Officers
+
 Stores information about officers, including their name, rank, and station.
 
 ### 👤 Criminals
+
 Maintains criminal records such as age, crime type, and previous case information.
 
 ### 📄 FIR
+
 Stores information related to FIR records, including the filing date, area, crime type, assigned officer, and case status.
 
 ### ⚖️ Cases
+
 Connects FIR records with criminal information and stores the verdict or case outcome.
 
 ---
